@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Header from "./components/Header";
 import HeroCarousel from "./components/HeroCarousel";
 
@@ -193,14 +194,22 @@ export default function Home() {
                 <p className="text-cinza-terra leading-relaxed mb-8">
                   O Grupo DH Agropecuária é a combinação de tradição, técnica e responsabilidade. Atuamos com pecuária de corte Angus e Nelore, agricultura de soja e milho e genética bovina, sempre guiados por um modelo integrado e sustentável. Nosso compromisso é produzir com excelência, respeitar a terra e garantir que cada etapa da nossa cadeia reforce a qualidade que chega até a mesa dos consumidores.
                 </p>
-                <a
-                  href="https://wa.me/5561999010093?text=Ol%C3%A1!%20Eu%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20DH%20Agropecu%C3%A1ria."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-8 py-3 bg-verde-pasto text-terra-noite text-sm font-medium tracking-wide hover:bg-verde-pasto/85 transition-colors"
-                >
-                  Saiba mais sobre o Grupo DH
-                </a>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://wa.me/5561999010093?text=Ol%C3%A1!%20Eu%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20DH%20Agropecu%C3%A1ria."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-8 py-3 bg-verde-pasto text-terra-noite text-sm font-medium tracking-wide hover:bg-verde-pasto/85 transition-colors"
+                  >
+                    Saiba mais sobre o Grupo DH
+                  </a>
+                  <Link
+                    href="/nossa-historia"
+                    className="inline-block px-8 py-3 border border-verde-pasto text-marfim text-sm tracking-widest uppercase hover:bg-verde-pasto/20 transition-colors"
+                  >
+                    Nossa História →
+                  </Link>
+                </div>
               </div>
               <div className="relative aspect-[4/3] lg:aspect-[3/4] overflow-hidden">
                 <Image

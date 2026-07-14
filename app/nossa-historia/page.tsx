@@ -15,10 +15,10 @@ function TopoDivider() {
   return (
     <div className="w-full overflow-hidden pointer-events-none select-none" aria-hidden>
       <svg viewBox="0 0 1200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-12 opacity-20">
-        <path d="M0 30 Q150 10 300 30 T600 30 T900 30 T1200 30" stroke="#7c8a5c" strokeWidth="0.8" />
-        <path d="M0 38 Q150 18 300 38 T600 38 T900 38 T1200 38" stroke="#7c8a5c" strokeWidth="0.6" />
-        <path d="M0 46 Q150 26 300 46 T600 46 T900 46 T1200 46" stroke="#7c8a5c" strokeWidth="0.5" />
-        <path d="M0 22 Q150 2 300 22 T600 22 T900 22 T1200 22" stroke="#7c8a5c" strokeWidth="0.5" />
+        <path d="M0 30 Q150 10 300 30 T600 30 T900 30 T1200 30" stroke="#D4AF37" strokeWidth="0.8" />
+        <path d="M0 38 Q150 18 300 38 T600 38 T900 38 T1200 38" stroke="#D4AF37" strokeWidth="0.6" />
+        <path d="M0 46 Q150 26 300 46 T600 46 T900 46 T1200 46" stroke="#D4AF37" strokeWidth="0.5" />
+        <path d="M0 22 Q150 2 300 22 T600 22 T900 22 T1200 22" stroke="#D4AF37" strokeWidth="0.5" />
       </svg>
     </div>
   );
@@ -81,7 +81,7 @@ export default function NossaHistoriaPage() {
               </svg>
               Voltar
             </Link>
-            <div className="w-8 h-px bg-verde-pasto mb-6" />
+            <div className="w-8 h-px bg-dourado-selo mb-6" />
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-marfim leading-tight max-w-2xl">
               Nossa História
             </h1>
@@ -92,14 +92,14 @@ export default function NossaHistoriaPage() {
         <section className="bg-barro">
           <TopoDivider />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="grid sm:grid-cols-3 gap-px bg-verde-pasto/10">
+            <div className="grid sm:grid-cols-3 gap-px bg-dourado-selo/10">
               {[
                 { value: "+10", label: "anos de história" },
                 { value: "5.000", label: "cabeças confinadas/ano" },
                 { value: "100%", label: "fazendas autossuficientes" },
               ].map((stat) => (
                 <div key={stat.label} className="bg-barro px-8 py-10 text-center">
-                  <p className="font-mono text-3xl sm:text-4xl text-verde-pasto mb-2">{stat.value}</p>
+                  <p className="font-mono text-3xl sm:text-4xl text-dourado-selo mb-2">{stat.value}</p>
                   <p className="text-cinza-terra text-sm">{stat.label}</p>
                 </div>
               ))}
@@ -113,7 +113,7 @@ export default function NossaHistoriaPage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
             <div className="relative">
               {/* vertical line */}
-              <div className="hidden lg:block absolute left-[5.5rem] top-0 bottom-0 w-px bg-verde-pasto/20" aria-hidden />
+              <div className="hidden lg:block absolute left-[5.5rem] top-0 bottom-0 w-px bg-dourado-selo/20" aria-hidden />
 
               <div className="flex flex-col gap-20 lg:gap-24">
                 {chapters.map((chapter, i) => (
@@ -124,7 +124,7 @@ export default function NossaHistoriaPage() {
                         {chapter.label}
                       </span>
                       <span
-                        className="relative flex items-center justify-center w-8 h-8 rounded-full border border-verde-pasto/40 bg-terra-noite font-mono text-xs text-verde-pasto z-10 group-hover:border-verde-pasto transition-colors"
+                        className="relative flex items-center justify-center w-8 h-8 rounded-full border border-dourado-selo/40 bg-terra-noite font-mono text-xs text-dourado-selo z-10 group-hover:border-dourado-selo transition-colors"
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -132,7 +132,7 @@ export default function NossaHistoriaPage() {
 
                     {/* content */}
                     <div className="flex-1">
-                      <div className="w-6 h-px bg-verde-pasto mb-5" />
+                      <div className="w-6 h-px bg-dourado-selo mb-5" />
                       <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl text-marfim mb-5 leading-snug">
                         {chapter.heading}
                       </h2>
@@ -154,7 +154,7 @@ export default function NossaHistoriaPage() {
             <svg
               viewBox="0 0 60 40"
               fill="none"
-              className="w-12 h-8 mx-auto mb-8 text-verde-pasto opacity-40"
+              className="w-12 h-8 mx-auto mb-8 text-dourado-selo opacity-40"
               aria-hidden
             >
               <path d="M0 40V24C0 10.745 8.582 3.007 25.745 1L27 8.255C19.418 9.582 15 13.5 15 20H26V40H0zm34 0V24C34 10.745 42.582 3.007 59.745 1L61 8.255C53.418 9.582 49 13.5 49 20H60V40H34z" fill="currentColor" />
@@ -170,13 +170,13 @@ export default function NossaHistoriaPage() {
                 href="https://wa.me/5561999010093"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3 bg-verde-pasto text-terra-noite text-sm font-medium tracking-wide hover:bg-verde-pasto/85 transition-colors"
+                className="inline-block px-8 py-3 bg-dourado-selo text-terra-noite text-sm font-medium tracking-wide hover:bg-dourado-selo/85 transition-colors"
               >
                 Falar no WhatsApp
               </a>
               <Link
                 href="/"
-                className="inline-block px-8 py-3 border border-verde-pasto text-marfim text-sm tracking-widest uppercase hover:bg-verde-pasto/20 transition-colors"
+                className="inline-block px-8 py-3 border border-dourado-selo text-marfim text-sm tracking-widest uppercase hover:bg-dourado-selo/20 transition-colors"
               >
                 ← Voltar para o início
               </Link>
@@ -209,7 +209,7 @@ export default function NossaHistoriaPage() {
       </main>
 
       {/* ── Footer minimal ──────────────────────────────────────────────────── */}
-      <footer className="bg-barro border-t border-verde-pasto/15 py-8">
+      <footer className="bg-barro border-t border-dourado-selo/15 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Image
             src="https://dhagropecuaria.com/wp-content/uploads/2026/01/cropped-LOGO-VERSAO-PNG-2.png"
@@ -221,9 +221,15 @@ export default function NossaHistoriaPage() {
           <p className="text-xs text-cinza-terra/60">
             © {new Date().getFullYear()} Grupo DH Agropecuária. Todos os direitos reservados.
           </p>
-          <Link href="/" className="text-xs text-cinza-terra hover:text-marfim transition-colors">
-            Voltar ao site →
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/" className="text-xs text-cinza-terra hover:text-marfim transition-colors">
+              Voltar ao site →
+            </Link>
+            <a href="https://wa.me/5561996782146" target="_blank" rel="noopener noreferrer"
+              className="text-xs text-cinza-terra/40 hover:text-dourado-selo transition-colors">
+              Desenvolvido por Erick Alencar
+            </a>
+          </div>
         </div>
       </footer>
     </>

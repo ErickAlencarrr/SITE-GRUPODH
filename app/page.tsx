@@ -33,11 +33,11 @@ const GALLERY = [
   { src: `${BASE}/22062022-DJI_0027-scaled.jpg`, alt: "Vista aérea" },
 ];
 
-/* verde-pasto como label de seção — acento, não fundo */
+/* dourado-selo como label de seção — acento, não fundo */
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <p className="flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase text-verde-pasto mb-6">
-      <span className="w-5 h-px bg-verde-pasto" />
+    <p className="flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase text-dourado-selo mb-6">
+      <span className="w-5 h-px bg-dourado-selo" />
       {children}
     </p>
   );
@@ -45,7 +45,7 @@ function Tag({ children }: { children: React.ReactNode }) {
 
 /* botão primário escuro */
 function Btn({ href, children, external = false }: { href: string; children: React.ReactNode; external?: boolean }) {
-  const cls = "inline-flex items-center gap-3 px-8 py-4 bg-verde-pasto text-terra-noite text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/85 transition-colors";
+  const cls = "inline-flex items-center gap-3 px-8 py-4 bg-dourado-selo text-terra-noite text-xs font-black tracking-[0.2em] uppercase hover:bg-dourado-selo/85 transition-colors";
   const arrow = (
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden>
       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
@@ -57,7 +57,7 @@ function Btn({ href, children, external = false }: { href: string; children: Rea
 
 /* botão outline */
 function BtnOutline({ href, children, external = false }: { href: string; children: React.ReactNode; external?: boolean }) {
-  const cls = "inline-flex items-center gap-3 px-8 py-4 border border-verde-pasto text-marfim text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto hover:text-terra-noite transition-colors";
+  const cls = "inline-flex items-center gap-3 px-8 py-4 border border-dourado-selo text-marfim text-xs font-black tracking-[0.2em] uppercase hover:bg-dourado-selo hover:text-terra-noite transition-colors";
   if (external) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{children}</a>;
   return <Link href={href} className={cls}>{children}</Link>;
 }
@@ -74,10 +74,10 @@ export default function Home() {
           <HeroCarousel />
         </section>
 
-        {/* ── STATS — barro, números em verde-pasto ───────────────────────── */}
-        <section className="bg-barro border-b border-verde-pasto/10">
+        {/* ── STATS — barro, números em dourado-selo ───────────────────────── */}
+        <section className="bg-barro border-b border-dourado-selo/10">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-verde-pasto/10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-dourado-selo/10">
               {[
                 { value: "+10", label: "Anos de história" },
                 { value: "5.000", label: "Cabeças/ano" },
@@ -85,7 +85,7 @@ export default function Home() {
                 { value: "100%", label: "Rastreável" },
               ].map((s) => (
                 <div key={s.label} className="py-10 lg:py-14 text-center">
-                  <p className="font-mono text-4xl lg:text-5xl font-black text-verde-pasto leading-none mb-2">
+                  <p className="font-mono text-4xl lg:text-5xl font-black text-dourado-selo leading-none mb-2">
                     {s.value}
                   </p>
                   <p className="text-cinza-terra text-xs tracking-widest uppercase">{s.label}</p>
@@ -109,7 +109,7 @@ export default function Home() {
                   sizes="(max-width:1024px) 100vw, 50vw"
                 />
                 {/* listra verde na borda direita da foto */}
-                <div className="absolute inset-y-0 right-0 w-1 bg-verde-pasto" />
+                <div className="absolute inset-y-0 right-0 w-1 bg-dourado-selo" />
               </div>
 
               {/* texto */}
@@ -149,13 +149,13 @@ export default function Home() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3">
               {PILLARS.map((p) => (
                 <div key={p.n}
-                  className="relative p-8 lg:p-10 border border-verde-pasto/10 hover:border-verde-pasto/35 hover:bg-terra-noite transition-all duration-300 overflow-hidden group">
-                  <span className="absolute -bottom-2 -right-1 font-mono text-8xl font-black text-verde-pasto/6 select-none leading-none">
+                  className="relative p-8 lg:p-10 border border-dourado-selo/10 hover:border-dourado-selo/35 hover:bg-terra-noite transition-all duration-300 overflow-hidden group">
+                  <span className="absolute -bottom-2 -right-1 font-mono text-8xl font-black text-dourado-selo/6 select-none leading-none">
                     {p.n}
                   </span>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="font-mono text-xs font-black text-verde-pasto">{p.n}</span>
-                    <span className="flex-1 h-px bg-verde-pasto/20" />
+                    <span className="font-mono text-xs font-black text-dourado-selo">{p.n}</span>
+                    <span className="flex-1 h-px bg-dourado-selo/20" />
                     <div className="relative w-7 h-7 shrink-0 opacity-60">
                       <Image src={p.icon} alt="" fill className="object-contain" sizes="28px" />
                     </div>
@@ -191,7 +191,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-4">
                   <a href="https://wa.me/5561999010093" target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 text-xs font-black tracking-[0.2em] uppercase transition-colors"
-                    style={{ backgroundColor: "#b6904a", color: "#0e0c09" }}>
+                    style={{ backgroundColor: "#D4AF37", color: "#0e0c09" }}>
                     Falar no WhatsApp
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden>
                       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
@@ -199,7 +199,7 @@ export default function Home() {
                   </a>
                   <a href="https://www.dhuboi.com.br/" target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 border text-xs font-black tracking-[0.2em] uppercase hover:bg-dourado-selo/10 transition-colors"
-                    style={{ borderColor: "#b6904a", color: "#f4efe6" }}>
+                    style={{ borderColor: "#D4AF37", color: "#f4efe6" }}>
                     Conheça a Dhuboi
                   </a>
                 </div>
@@ -209,7 +209,7 @@ export default function Home() {
                 {/* atributos */}
                 <div className="grid grid-cols-2 gap-2">
                   {["Padrão técnico", "Manejo responsável", "Genética selecionada", "Nutrição equilibrada", "Rastreabilidade", "Padronização de carcaças"].map((t) => (
-                    <div key={t} className="px-4 py-3 border border-cinza-terra/15 text-xs text-cinza-terra font-medium hover:border-verde-pasto/40 hover:text-marfim transition-colors">
+                    <div key={t} className="px-4 py-3 border border-cinza-terra/15 text-xs text-cinza-terra font-medium hover:border-dourado-selo/40 hover:text-marfim transition-colors">
                       {t}
                     </div>
                   ))}
@@ -217,13 +217,13 @@ export default function Home() {
 
                 {/* selos */}
                 <div>
-                  <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "#b6904a" }}>Certificações</p>
+                  <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "#D4AF37" }}>Certificações</p>
                   <div className="flex gap-5">
                     {[
                       { src: `${BASE}/2897A_MARCA-ANGUS-GOLD-alt01-AF-01-e1768959271147.png`, alt: "Angus Gold" },
                       { src: `${BASE}/logo-sustentabilidade.png`, alt: "Sustentabilidade" },
                     ].map((s) => (
-                      <div key={s.alt} className="relative w-16 h-16 border p-1" style={{ borderColor: "rgba(182,144,74,0.35)" }}>
+                      <div key={s.alt} className="relative w-16 h-16 border p-1" style={{ borderColor: "rgba(212,175,55,0.35)" }}>
                         <Image src={s.src} alt={s.alt} fill className="object-contain p-1" sizes="64px" />
                       </div>
                     ))}
@@ -247,13 +247,13 @@ export default function Home() {
                     <Image src={img.src} alt={img.alt} fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width:1024px) 50vw, 25vw" />
-                    <div className="absolute inset-0 bg-terra-noite/30 group-hover:bg-verde-pasto/15 transition-colors" />
+                    <div className="absolute inset-0 bg-terra-noite/30 group-hover:bg-dourado-selo/15 transition-colors" />
                   </div>
                 ))}
               </div>
 
               {/* texto */}
-              <div className="px-8 sm:px-12 lg:px-20 py-20 lg:py-28 flex flex-col justify-center border-l border-verde-pasto/10">
+              <div className="px-8 sm:px-12 lg:px-20 py-20 lg:py-28 flex flex-col justify-center border-l border-dourado-selo/10">
                 <Tag>Pecuária & Agricultura</Tag>
                 <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-marfim leading-tight mb-8">
                   Produtividade<br />com<br />responsabilidade
@@ -294,14 +294,14 @@ export default function Home() {
                 <Image src={img.src} alt={img.alt} width={600} height={450}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw" />
-                <div className="absolute inset-0 bg-verde-pasto/0 group-hover:bg-verde-pasto/15 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-dourado-selo/0 group-hover:bg-dourado-selo/15 transition-colors duration-300" />
               </div>
             ))}
           </div>
         </section>
 
         {/* ── FALE CONOSCO — barro escuro, acento verde ───────────────────── */}
-        <section className="bg-barro border-t border-verde-pasto/10">
+        <section className="bg-barro border-t border-dourado-selo/10">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20 lg:py-28">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -315,11 +315,11 @@ export default function Home() {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
                 <a href="https://wa.me/5561999010093" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-verde-pasto text-terra-noite text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/85 transition-colors">
+                  className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-dourado-selo text-terra-noite text-xs font-black tracking-[0.2em] uppercase hover:bg-dourado-selo/85 transition-colors">
                   Falar no WhatsApp
                 </a>
                 <a href="https://www.instagram.com/grupodhagropecuaria/" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-10 py-5 border border-verde-pasto text-marfim text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/10 transition-colors">
+                  className="inline-flex items-center justify-center gap-3 px-10 py-5 border border-dourado-selo text-marfim text-xs font-black tracking-[0.2em] uppercase hover:bg-dourado-selo/10 transition-colors">
                   Instagram ↗
                 </a>
               </div>
@@ -330,25 +330,23 @@ export default function Home() {
       </main>
 
       {/* ── FOOTER ──────────────────────────────────────────────────────────── */}
-      <footer className="bg-terra-noite border-t border-verde-pasto/10">
+      <footer className="bg-terra-noite border-t border-dourado-selo/10">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
             <div className="lg:col-span-2">
-              <div className="inline-block bg-verde-pasto px-4 py-3 mb-6">
-                <Image
-                  src="https://dhagropecuaria.com/wp-content/uploads/2026/01/cropped-LOGO-VERSAO-PNG-2.png"
-                  alt="DH Agropecuária" width={140} height={56}
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
+              <Image
+                src="https://dhagropecuaria.com/wp-content/uploads/2026/01/cropped-LOGO-VERSAO-PNG-2.png"
+                alt="DH Agropecuária" width={140} height={56}
+                className="h-14 w-auto object-contain mb-6"
+              />
               <p className="text-cinza-terra text-sm leading-relaxed max-w-xs">
                 Pecuária de corte Angus e Nelore, agricultura de soja e milho, e genética bovina certificada.
               </p>
             </div>
 
             <nav aria-label="Rodapé">
-              <p className="text-xs font-black tracking-[0.2em] uppercase text-verde-pasto mb-5">Navegação</p>
+              <p className="text-xs font-black tracking-[0.2em] uppercase text-dourado-selo mb-5">Navegação</p>
               <ul className="flex flex-col gap-3">
                 {[
                   { label: "Início", href: "#inicio" },
@@ -356,9 +354,11 @@ export default function Home() {
                   { label: "Nossa História", href: "/nossa-historia" },
                   { label: "Pecuária e Agricultura", href: "#pecuaria-agricultura" },
                   { label: "Blog", href: "/blog" },
+                  { label: "Trabalhe Conosco", href: "/vagas" },
+                  { label: "Canal de Denúncia", href: "/canal-de-denuncia" },
                 ].map((item) => (
                   <li key={item.href}>
-                    <a href={item.href} className="text-cinza-terra text-sm hover:text-verde-pasto transition-colors">
+                    <a href={item.href} className="text-cinza-terra text-sm hover:text-dourado-selo transition-colors">
                       {item.label}
                     </a>
                   </li>
@@ -367,7 +367,7 @@ export default function Home() {
             </nav>
 
             <div>
-              <p className="text-xs font-black tracking-[0.2em] uppercase text-verde-pasto mb-5">Redes</p>
+              <p className="text-xs font-black tracking-[0.2em] uppercase text-dourado-selo mb-5">Redes</p>
               <div className="flex flex-col gap-3 mb-8">
                 {[
                   { label: "Instagram", href: "https://www.instagram.com/grupodhagropecuaria/" },
@@ -376,12 +376,12 @@ export default function Home() {
                   { label: "WhatsApp",  href: "https://wa.me/5561999010093" },
                 ].map((s) => (
                   <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer"
-                    className="text-cinza-terra text-sm hover:text-verde-pasto transition-colors">
+                    className="text-cinza-terra text-sm hover:text-dourado-selo transition-colors">
                     {s.label} ↗
                   </a>
                 ))}
               </div>
-              <p className="text-xs font-black tracking-[0.2em] uppercase mb-3" style={{ color: "#b6904a" }}>
+              <p className="text-xs font-black tracking-[0.2em] uppercase mb-3" style={{ color: "#D4AF37" }}>
                 Certificações
               </p>
               <div className="flex gap-4">
@@ -389,7 +389,7 @@ export default function Home() {
                   { src: `${BASE}/2897A_MARCA-ANGUS-GOLD-alt01-AF-01-e1768959271147.png`, alt: "Angus Gold" },
                   { src: `${BASE}/logo-sustentabilidade.png`, alt: "Sustentabilidade" },
                 ].map((s) => (
-                  <div key={s.alt} className="relative w-12 h-12 border p-1" style={{ borderColor: "rgba(182,144,74,0.35)" }}>
+                  <div key={s.alt} className="relative w-12 h-12 border p-1" style={{ borderColor: "rgba(212,175,55,0.35)" }}>
                     <Image src={s.src} alt={s.alt} fill className="object-contain p-0.5" sizes="48px" />
                   </div>
                 ))}
@@ -398,14 +398,20 @@ export default function Home() {
 
           </div>
 
-          <div className="border-t border-verde-pasto/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="border-t border-dourado-selo/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-cinza-terra/40">
               © {new Date().getFullYear()} Grupo DH Agropecuária. Todos os direitos reservados.
             </p>
-            <a href="https://www.dhuboi.com.br/" target="_blank" rel="noopener noreferrer"
-              className="text-xs text-cinza-terra/40 hover:text-cinza-terra transition-colors">
-              Conheça a Dhuboi →
-            </a>
+            <div className="flex items-center gap-6">
+              <a href="https://www.dhuboi.com.br/" target="_blank" rel="noopener noreferrer"
+                className="text-xs text-cinza-terra/40 hover:text-cinza-terra transition-colors">
+                Conheça a Dhuboi →
+              </a>
+              <a href="https://wa.me/5561996782146" target="_blank" rel="noopener noreferrer"
+                className="text-xs text-cinza-terra/40 hover:text-dourado-selo transition-colors">
+                Desenvolvido por Erick Alencar
+              </a>
+            </div>
           </div>
         </div>
       </footer>

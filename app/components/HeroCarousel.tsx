@@ -59,7 +59,7 @@ export default function HeroCarousel() {
       {/* conteúdo — alinhado ao bottom-left */}
       <div className="absolute inset-0 flex flex-col justify-end px-6 sm:px-12 lg:px-20 pb-20 lg:pb-28">
         <div className="max-w-3xl">
-          <span className="inline-block bg-verde-pasto text-terra-noite text-xs font-black tracking-[0.2em] uppercase px-3 py-1.5 mb-6">
+          <span className="inline-block bg-dourado-selo text-terra-noite text-xs font-black tracking-[0.2em] uppercase px-3 py-1.5 mb-6">
             {slide.tag}
           </span>
 
@@ -73,7 +73,7 @@ export default function HeroCarousel() {
 
           {slide.cta.external ? (
             <a href={slide.cta.href} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-verde-pasto text-terra-noite px-8 py-4 text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/85 transition-colors">
+              className="inline-flex items-center gap-3 bg-dourado-selo text-terra-noite px-8 py-4 text-xs font-black tracking-[0.2em] uppercase hover:bg-dourado-selo/85 transition-colors">
               {slide.cta.label}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                 <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
@@ -81,7 +81,7 @@ export default function HeroCarousel() {
             </a>
           ) : (
             <a href={slide.cta.href}
-              className="inline-flex items-center gap-3 bg-verde-pasto text-terra-noite px-8 py-4 text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/85 transition-colors">
+              className="inline-flex items-center gap-3 bg-dourado-selo text-terra-noite px-8 py-4 text-xs font-black tracking-[0.2em] uppercase hover:bg-dourado-selo/85 transition-colors">
               {slide.cta.label}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                 <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
@@ -99,7 +99,7 @@ export default function HeroCarousel() {
             style={{
               height: i === current ? "2.5rem" : "0.375rem",
               width: "2px",
-              backgroundColor: i === current ? "#7c8a5c" : "rgba(244,239,230,0.3)",
+              backgroundColor: i === current ? "#D4AF37" : "rgba(244,239,230,0.3)",
             }} />
         ))}
         <span className="font-mono text-xs text-cinza-terra/50 mt-2">

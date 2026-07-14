@@ -6,12 +6,12 @@ import HeroCarousel from "./components/HeroCarousel";
 const BASE = "https://dhagropecuaria.com/wp-content/uploads/2026/01";
 
 const PILLARS = [
-  { n: "01", icon: `${BASE}/quality.png`, title: "Certificação de Excelência Angus", desc: "Protocolos rigorosos que asseguram a qualidade do nosso rebanho Angus, reconhecido nacionalmente." },
-  { n: "02", icon: `${BASE}/planting.png`, title: "Sistema Integrado Completo", desc: "Integração lavoura-pecuária que garante eficiência, sustentabilidade e equilíbrio no uso da terra." },
-  { n: "03", icon: `${BASE}/cow.png`, title: "Genética Certificada (CEIP)", desc: "Seleção criteriosa de reprodutores e sêmen, priorizando desempenho, fertilidade e qualidade de carcaça." },
-  { n: "04", icon: `${BASE}/monitor-1.png`, title: "Gestão por Dados", desc: "Processos monitorados com métricas, indicadores e tomada de decisão baseada em informação." },
-  { n: "05", icon: `${BASE}/validation.png`, title: "Sustentabilidade e Bem-estar Animal", desc: "Carregamos o Selo Angus de Sustentabilidade, reconhecimento do nosso compromisso com práticas produtivas." },
-  { n: "06", icon: `${BASE}/badge-1.png`, title: "Rastreabilidade e Consistência", desc: "Do nascimento ao abate, cada etapa segue padrões que asseguram segurança alimentar e previsibilidade." },
+  { n: "01", icon: `${BASE}/quality.png`,   title: "Certificação de Excelência Angus",    desc: "Protocolos rigorosos que asseguram a qualidade do nosso rebanho Angus, reconhecido nacionalmente." },
+  { n: "02", icon: `${BASE}/planting.png`,  title: "Sistema Integrado Completo",          desc: "Integração lavoura-pecuária que garante eficiência, sustentabilidade e equilíbrio no uso da terra." },
+  { n: "03", icon: `${BASE}/cow.png`,       title: "Genética Certificada (CEIP)",         desc: "Seleção criteriosa de reprodutores e sêmen, priorizando desempenho, fertilidade e qualidade de carcaça." },
+  { n: "04", icon: `${BASE}/monitor-1.png`, title: "Gestão por Dados",                    desc: "Processos monitorados com métricas, indicadores e tomada de decisão baseada em informação." },
+  { n: "05", icon: `${BASE}/validation.png`,title: "Sustentabilidade e Bem-estar Animal", desc: "Carregamos o Selo Angus de Sustentabilidade, reconhecimento do nosso compromisso com práticas produtivas." },
+  { n: "06", icon: `${BASE}/badge-1.png`,   title: "Rastreabilidade e Consistência",      desc: "Do nascimento ao abate, cada etapa segue padrões que asseguram segurança alimentar e previsibilidade." },
 ];
 
 const GALLERY = [
@@ -33,31 +33,33 @@ const GALLERY = [
   { src: `${BASE}/22062022-DJI_0027-scaled.jpg`, alt: "Vista aérea" },
 ];
 
-function Tag({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+/* verde-pasto como label de seção — acento, não fundo */
+function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className={`inline-flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase mb-8 ${dark ? "text-terra-noite/50" : "text-verde-pasto/70"}`}>
-      <span className={`w-4 h-px ${dark ? "bg-terra-noite/40" : "bg-verde-pasto/60"}`} />
+    <p className="flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase text-verde-pasto mb-6">
+      <span className="w-5 h-px bg-verde-pasto" />
       {children}
-    </span>
+    </p>
   );
 }
 
-function ArrowBtn({ href, children, external = false, invert = false }: {
-  href: string; children: React.ReactNode; external?: boolean; invert?: boolean;
-}) {
-  const cls = `inline-flex items-center gap-3 px-8 py-4 text-xs font-black tracking-[0.2em] uppercase transition-colors ${
-    invert
-      ? "bg-terra-noite text-marfim hover:bg-barro"
-      : "bg-verde-pasto text-terra-noite hover:bg-verde-pasto/85"
-  }`;
+/* botão primário escuro */
+function Btn({ href, children, external = false }: { href: string; children: React.ReactNode; external?: boolean }) {
+  const cls = "inline-flex items-center gap-3 px-8 py-4 bg-verde-pasto text-terra-noite text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/85 transition-colors";
   const arrow = (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden>
       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
     </svg>
   );
-  return external
-    ? <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{children}{arrow}</a>
-    : <Link href={href} className={cls}>{children}{arrow}</Link>;
+  if (external) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{children}{arrow}</a>;
+  return <Link href={href} className={cls}>{children}{arrow}</Link>;
+}
+
+/* botão outline */
+function BtnOutline({ href, children, external = false }: { href: string; children: React.ReactNode; external?: boolean }) {
+  const cls = "inline-flex items-center gap-3 px-8 py-4 border border-verde-pasto text-marfim text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto hover:text-terra-noite transition-colors";
+  if (external) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{children}</a>;
+  return <Link href={href} className={cls}>{children}</Link>;
 }
 
 export default function Home() {
@@ -66,15 +68,16 @@ export default function Home() {
       <Header />
 
       <main>
+
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
         <section id="inicio">
           <HeroCarousel />
         </section>
 
-        {/* ── STATS — fundo verde-pasto, números grandes ───────────────────── */}
-        <section className="bg-verde-pasto">
+        {/* ── STATS — barro, números em verde-pasto ───────────────────────── */}
+        <section className="bg-barro border-b border-verde-pasto/10">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-terra-noite/15">
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-verde-pasto/10">
               {[
                 { value: "+10", label: "Anos de história" },
                 { value: "5.000", label: "Cabeças/ano" },
@@ -82,53 +85,54 @@ export default function Home() {
                 { value: "100%", label: "Rastreável" },
               ].map((s) => (
                 <div key={s.label} className="py-10 lg:py-14 text-center">
-                  <p className="font-mono text-4xl lg:text-5xl font-black text-terra-noite leading-none mb-2">
+                  <p className="font-mono text-4xl lg:text-5xl font-black text-verde-pasto leading-none mb-2">
                     {s.value}
                   </p>
-                  <p className="text-terra-noite/60 text-xs tracking-widest uppercase">{s.label}</p>
+                  <p className="text-cinza-terra text-xs tracking-widest uppercase">{s.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── QUEM SOMOS — fundo CLARO (marfim), texto escuro ─────────────── */}
-        <section id="quem-somos" className="bg-marfim">
+        {/* ── QUEM SOMOS — terra-noite, split foto/texto ──────────────────── */}
+        <section id="quem-somos" className="bg-terra-noite">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 min-h-[620px]">
-              {/* texto */}
-              <div className="px-8 sm:px-12 lg:px-20 py-20 lg:py-28 flex flex-col justify-center">
-                <Tag dark>Quem Somos</Tag>
-                <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-terra-noite leading-tight mb-8">
-                  Com raízes<br />no campo e visão<br />voltada ao amanhã
-                </h2>
-                <p className="text-terra-noite/60 leading-relaxed mb-4 max-w-md">
-                  O Grupo DH Agropecuária é a combinação de tradição, técnica e responsabilidade. Atuamos com pecuária de corte Angus e Nelore, agricultura de soja e milho e genética bovina, sempre guiados por um modelo integrado e sustentável.
-                </p>
-                <p className="text-terra-noite/60 leading-relaxed mb-10 max-w-md">
-                  Nosso compromisso é produzir com excelência, respeitar a terra e garantir que cada etapa da nossa cadeia reforce a qualidade que chega até a mesa dos consumidores.
-                </p>
-                <ArrowBtn href="/nossa-historia" invert>Nossa História</ArrowBtn>
-              </div>
+            <div className="grid lg:grid-cols-2 min-h-[640px]">
 
-              {/* foto — cobre toda a coluna */}
-              <div className="relative min-h-[400px] lg:min-h-full overflow-hidden">
+              {/* foto */}
+              <div className="relative min-h-[400px] lg:min-h-full overflow-hidden order-2 lg:order-1">
                 <Image
                   src="https://dhagropecuaria.com/wp-content/uploads/2026/05/IMG_6950.JPG.jpeg"
                   alt="Campo do Grupo DH"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  fill className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 50vw"
                 />
-                {/* borda verde-pasto na esquerda da foto */}
-                <div className="absolute inset-y-0 left-0 w-1 bg-verde-pasto" />
+                {/* listra verde na borda direita da foto */}
+                <div className="absolute inset-y-0 right-0 w-1 bg-verde-pasto" />
               </div>
+
+              {/* texto */}
+              <div className="px-8 sm:px-12 lg:px-20 py-20 lg:py-28 flex flex-col justify-center order-1 lg:order-2">
+                <Tag>Quem Somos</Tag>
+                <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-marfim leading-tight mb-8">
+                  Com raízes<br />no campo e visão<br />voltada ao amanhã
+                </h2>
+                <p className="text-cinza-terra leading-relaxed mb-4 max-w-md">
+                  O Grupo DH Agropecuária é a combinação de tradição, técnica e responsabilidade. Atuamos com pecuária de corte Angus e Nelore, agricultura de soja e milho e genética bovina, sempre guiados por um modelo integrado e sustentável.
+                </p>
+                <p className="text-cinza-terra leading-relaxed mb-10 max-w-md">
+                  Nosso compromisso é produzir com excelência, respeitar a terra e garantir que cada etapa da nossa cadeia reforce a qualidade que chega até a mesa dos consumidores.
+                </p>
+                <Btn href="/nossa-historia">Nossa História</Btn>
+              </div>
+
             </div>
           </div>
         </section>
 
-        {/* ── PILARES — fundo terra-noite ───────────────────────────────────── */}
-        <section className="bg-terra-noite">
+        {/* ── PILARES — barro, grid numerado ──────────────────────────────── */}
+        <section className="bg-barro">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20 lg:py-28">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
               <div>
@@ -137,7 +141,7 @@ export default function Home() {
                   O que nos move<br />e nos diferencia
                 </h2>
               </div>
-              <p className="text-cinza-terra text-sm max-w-xs leading-relaxed lg:text-right">
+              <p className="text-cinza-terra text-sm max-w-xs leading-relaxed">
                 Seis compromissos que sustentam cada decisão no Grupo DH.
               </p>
             </div>
@@ -145,15 +149,14 @@ export default function Home() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3">
               {PILLARS.map((p) => (
                 <div key={p.n}
-                  className="relative p-8 lg:p-10 border border-verde-pasto/10 hover:border-verde-pasto/40 hover:bg-barro transition-all duration-300 group overflow-hidden">
-                  {/* watermark */}
-                  <span className="absolute -bottom-4 -right-2 font-mono text-8xl font-black text-verde-pasto/6 select-none leading-none">
+                  className="relative p-8 lg:p-10 border border-verde-pasto/10 hover:border-verde-pasto/35 hover:bg-terra-noite transition-all duration-300 overflow-hidden group">
+                  <span className="absolute -bottom-2 -right-1 font-mono text-8xl font-black text-verde-pasto/6 select-none leading-none">
                     {p.n}
                   </span>
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="font-mono text-xs font-bold text-verde-pasto">{p.n}</span>
+                    <span className="font-mono text-xs font-black text-verde-pasto">{p.n}</span>
                     <span className="flex-1 h-px bg-verde-pasto/20" />
-                    <div className="relative w-7 h-7 shrink-0 opacity-70">
+                    <div className="relative w-7 h-7 shrink-0 opacity-60">
                       <Image src={p.icon} alt="" fill className="object-contain" sizes="28px" />
                     </div>
                   </div>
@@ -165,24 +168,24 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── DA FAZENDA — fundo barro com imagem fantasma ──────────────────── */}
-        <section className="bg-barro relative overflow-hidden">
-          {/* imagem de fundo muito sutil */}
-          <div className="absolute inset-0 opacity-10">
+        {/* ── DA FAZENDA — terra-noite, acento dourado ────────────────────── */}
+        <section className="bg-terra-noite relative overflow-hidden">
+          <div className="absolute inset-0 opacity-8">
             <Image src={`${BASE}/21062022-C0003T01.jpg`} alt="" fill className="object-cover" sizes="100vw" />
           </div>
 
           <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20 lg:py-28">
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
               <div>
                 <Tag>Cadeia Integrada</Tag>
                 <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-marfim leading-tight mb-8">
                   Da fazenda à<br />mesa do chef.
                 </h2>
-                <p className="text-cinza-terra leading-relaxed mb-6">
+                <p className="text-cinza-terra leading-relaxed mb-5 max-w-md">
                   Os animais Angus das fazendas do Grupo DH abastecem a Dhuboi, marca de cortes premium Angus certificados. Esse vínculo garante uma cadeia totalmente integrada.
                 </p>
-                <p className="text-cinza-terra leading-relaxed mb-10">
+                <p className="text-cinza-terra leading-relaxed mb-10 max-w-md">
                   É essa consistência que permite à Dhuboi oferecer cortes reconhecidos por chefs e apreciadores de alta gastronomia, além de abastecer a Boutique Dhuboi em Formosa-GO.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -190,7 +193,7 @@ export default function Home() {
                     className="inline-flex items-center gap-3 px-8 py-4 text-xs font-black tracking-[0.2em] uppercase transition-colors"
                     style={{ backgroundColor: "#b6904a", color: "#0e0c09" }}>
                     Falar no WhatsApp
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden>
                       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                     </svg>
                   </a>
@@ -202,23 +205,20 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* chips de atributos + selo */}
-              <div className="flex flex-col gap-8">
-                <div className="grid grid-cols-2 gap-3">
+              <div className="flex flex-col gap-6">
+                {/* atributos */}
+                <div className="grid grid-cols-2 gap-2">
                   {["Padrão técnico", "Manejo responsável", "Genética selecionada", "Nutrição equilibrada", "Rastreabilidade", "Padronização de carcaças"].map((t) => (
-                    <div key={t}
-                      className="px-4 py-3 border border-verde-pasto/20 text-xs text-cinza-terra font-medium hover:border-verde-pasto/50 hover:text-marfim transition-colors">
+                    <div key={t} className="px-4 py-3 border border-cinza-terra/15 text-xs text-cinza-terra font-medium hover:border-verde-pasto/40 hover:text-marfim transition-colors">
                       {t}
                     </div>
                   ))}
                 </div>
 
-                {/* selos certificação */}
+                {/* selos */}
                 <div>
-                  <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "#b6904a" }}>
-                    Certificações
-                  </p>
-                  <div className="flex gap-6">
+                  <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "#b6904a" }}>Certificações</p>
+                  <div className="flex gap-5">
                     {[
                       { src: `${BASE}/2897A_MARCA-ANGUS-GOLD-alt01-AF-01-e1768959271147.png`, alt: "Angus Gold" },
                       { src: `${BASE}/logo-sustentabilidade.png`, alt: "Sustentabilidade" },
@@ -230,47 +230,48 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
 
-        {/* ── PECUÁRIA E AGRICULTURA — fundo marfim (CLARO) ────────────────── */}
-        <section id="pecuaria-agricultura" className="bg-marfim">
+        {/* ── PECUÁRIA — barro, fotos + texto ─────────────────────────────── */}
+        <section id="pecuaria-agricultura" className="bg-barro">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 min-h-[560px]">
+
               {/* grade 2×2 fotos */}
-              <div className="grid grid-cols-2 order-2 lg:order-1">
+              <div className="grid grid-cols-2">
                 {GALLERY.slice(12, 16).map((img) => (
                   <div key={img.src} className="relative aspect-square overflow-hidden group">
                     <Image src={img.src} alt={img.alt} fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 1024px) 50vw, 25vw" />
-                    <div className="absolute inset-0 bg-terra-noite/20 group-hover:bg-verde-pasto/20 transition-colors" />
+                      sizes="(max-width:1024px) 50vw, 25vw" />
+                    <div className="absolute inset-0 bg-terra-noite/30 group-hover:bg-verde-pasto/15 transition-colors" />
                   </div>
                 ))}
               </div>
 
               {/* texto */}
-              <div className="px-8 sm:px-12 lg:px-20 py-20 lg:py-28 flex flex-col justify-center order-1 lg:order-2">
-                <Tag dark>Pecuária & Agricultura</Tag>
-                <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-terra-noite leading-tight mb-8">
+              <div className="px-8 sm:px-12 lg:px-20 py-20 lg:py-28 flex flex-col justify-center border-l border-verde-pasto/10">
+                <Tag>Pecuária & Agricultura</Tag>
+                <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-marfim leading-tight mb-8">
                   Produtividade<br />com<br />responsabilidade
                 </h2>
-                <p className="text-terra-noite/60 leading-relaxed mb-4 max-w-md">
+                <p className="text-cinza-terra leading-relaxed mb-4 max-w-md">
                   Nosso modelo de pecuária de ciclo completo é integrado à produção de grãos. A soja e o milho cultivados nas fazendas sustentam o sistema, reforçam a sustentabilidade e aumentam a eficiência produtiva.
                 </p>
-                <p className="text-terra-noite/60 leading-relaxed mb-10 max-w-md">
+                <p className="text-cinza-terra leading-relaxed mb-10 max-w-md">
                   Do campo ao confinamento, cada etapa é conduzida com cuidado e planejamento.
                 </p>
-                <ArrowBtn href="https://wa.me/5561999010093" external invert>
-                  Veja como produzimos
-                </ArrowBtn>
+                <BtnOutline href="https://wa.me/5561999010093" external>Veja como produzimos</BtnOutline>
               </div>
+
             </div>
           </div>
         </section>
 
-        {/* ── GALERIA — fundo terra-noite ───────────────────────────────────── */}
+        {/* ── GALERIA — terra-noite ────────────────────────────────────────── */}
         <section className="bg-terra-noite pt-20 lg:pt-28">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 mb-12">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
@@ -281,7 +282,7 @@ export default function Home() {
                 </h2>
               </div>
               <p className="text-cinza-terra text-sm max-w-xs leading-relaxed">
-                Imagens reais do trabalho diário, o ritmo da fazenda e o ciclo produtivo do Grupo.
+                Imagens reais do trabalho diário e o ciclo produtivo do Grupo.
               </p>
             </div>
           </div>
@@ -292,59 +293,52 @@ export default function Home() {
               <div key={img.src} className="relative overflow-hidden mb-1 group" style={{ breakInside: "avoid" }}>
                 <Image src={img.src} alt={img.alt} width={600} height={450}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
-                <div className="absolute inset-0 bg-verde-pasto/0 group-hover:bg-verde-pasto/20 transition-colors duration-300" />
+                  sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw" />
+                <div className="absolute inset-0 bg-verde-pasto/0 group-hover:bg-verde-pasto/15 transition-colors duration-300" />
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── FALE CONOSCO — verde-pasto, texto escuro ─────────────────────── */}
-        <section className="bg-verde-pasto">
+        {/* ── FALE CONOSCO — barro escuro, acento verde ───────────────────── */}
+        <section className="bg-barro border-t border-verde-pasto/10">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20 lg:py-28">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="inline-flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase text-terra-noite/50 mb-8">
-                  <span className="w-4 h-px bg-terra-noite/40" />
-                  Fale Conosco
-                </span>
-                <h2 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-terra-noite leading-none mb-6">
+                <Tag>Fale Conosco</Tag>
+                <h2 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-marfim leading-none mb-6">
                   Ficou com<br />dúvidas?
                 </h2>
-                <p className="text-terra-noite/60 text-lg leading-relaxed max-w-md">
+                <p className="text-cinza-terra text-lg leading-relaxed max-w-md">
                   Nossa equipe responde sobre pecuária, genética, parcerias e muito mais.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
                 <a href="https://wa.me/5561999010093" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-terra-noite text-marfim text-xs font-black tracking-[0.2em] uppercase hover:bg-barro transition-colors">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
-                  </svg>
+                  className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-verde-pasto text-terra-noite text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/85 transition-colors">
                   Falar no WhatsApp
                 </a>
                 <a href="https://www.instagram.com/grupodhagropecuaria/" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-10 py-5 border-2 border-terra-noite text-terra-noite text-xs font-black tracking-[0.2em] uppercase hover:bg-terra-noite/10 transition-colors">
+                  className="inline-flex items-center justify-center gap-3 px-10 py-5 border border-verde-pasto text-marfim text-xs font-black tracking-[0.2em] uppercase hover:bg-verde-pasto/10 transition-colors">
                   Instagram ↗
                 </a>
               </div>
             </div>
           </div>
         </section>
+
       </main>
 
       {/* ── FOOTER ──────────────────────────────────────────────────────────── */}
       <footer className="bg-terra-noite border-t border-verde-pasto/10">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
             <div className="lg:col-span-2">
-              {/* logo no bloco verde — consistência com header */}
               <div className="inline-block bg-verde-pasto px-4 py-3 mb-6">
                 <Image
                   src="https://dhagropecuaria.com/wp-content/uploads/2026/01/cropped-LOGO-VERSAO-PNG-2.png"
-                  alt="DH Agropecuária"
-                  width={140}
-                  height={56}
+                  alt="DH Agropecuária" width={140} height={56}
                   className="h-10 w-auto object-contain"
                 />
               </div>
@@ -377,9 +371,9 @@ export default function Home() {
               <div className="flex flex-col gap-3 mb-8">
                 {[
                   { label: "Instagram", href: "https://www.instagram.com/grupodhagropecuaria/" },
-                  { label: "LinkedIn", href: "https://www.linkedin.com/company/grupo-dh-agropecuaria/" },
-                  { label: "YouTube", href: "https://www.youtube.com/@grupodhagropecuaria" },
-                  { label: "WhatsApp", href: "https://wa.me/5561999010093" },
+                  { label: "LinkedIn",  href: "https://www.linkedin.com/company/grupo-dh-agropecuaria/" },
+                  { label: "YouTube",   href: "https://www.youtube.com/@grupodhagropecuaria" },
+                  { label: "WhatsApp",  href: "https://wa.me/5561999010093" },
                 ].map((s) => (
                   <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer"
                     className="text-cinza-terra text-sm hover:text-verde-pasto transition-colors">
@@ -387,7 +381,9 @@ export default function Home() {
                   </a>
                 ))}
               </div>
-              <p className="text-xs font-black tracking-[0.2em] uppercase mb-3" style={{ color: "#b6904a" }}>Certificações</p>
+              <p className="text-xs font-black tracking-[0.2em] uppercase mb-3" style={{ color: "#b6904a" }}>
+                Certificações
+              </p>
               <div className="flex gap-4">
                 {[
                   { src: `${BASE}/2897A_MARCA-ANGUS-GOLD-alt01-AF-01-e1768959271147.png`, alt: "Angus Gold" },
@@ -399,6 +395,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
+
           </div>
 
           <div className="border-t border-verde-pasto/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
